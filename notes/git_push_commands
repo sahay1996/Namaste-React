@@ -1,0 +1,6 @@
+git init -- To intialize the git repository
+git branch -m main -- To make branch as main
+git add .-- To add all the files to the github
+git commit -m "episode 1"-- To make files locally available for github
+git remote add origin "link name" -- To add files remotely
+git push origin main -- To push code to github/main branch
