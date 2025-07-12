@@ -1,0 +1,28 @@
+{
+  "name": "namaste_react_july",
+  "version": "1.0.0",
+  "description": "This is namaste react by Ashish",
+  "scripts": {
+    "start": "npx parcel index.html",
+    "build": "npx parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sahay1996/Namaste-React.git"
+  },
+  "keywords": [],
+  "author": "Ashish",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sahay1996/Namaste-React/issues"
+  },
+  "homepage": "https://github.com/sahay1996/Namaste-React#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
