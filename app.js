@@ -128,7 +128,7 @@ const ResturantCard = (props) => {
         className="res-logo"
       />
       <h3 className="res-card-heading">{resData.card.card.info.name}</h3>
-      <h4>{resData.card.card.info.cuisines.join(",")}</h4>
+      <h4>{resData.card.card.info.cuisines.join("-")}</h4>
       <h4>{resData.card.card.info.avgRating}</h4>
       <h4>{resData.card.card.info.sla.deliveryTime}</h4>
       <h4>{resData.card.card.info.costForTwo}</h4>
