@@ -19,22 +19,123 @@ const Header = () => {
     </div>
   );
 };
+const resObj = {
+  card: {
+    card: {
+      "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+      info: {
+        id: "635864",
+        name: "Masala Kitchen",
+        cloudinaryImageId: "uizl1chl5gp2vxyw15oi",
+        locality: "Preet vihar",
+        areaName: "Laxmi Nagar",
+        costForTwo: "₹300 for two",
+        cuisines: [
+          "North Indian",
+          "Chinese",
+          "Fast Food",
+          "Seafood",
+          "Italian",
+          "European",
+        ],
+        avgRating: 4.4,
+        parentId: "3434",
+        avgRatingString: "4.4",
+        totalRatingsString: "74",
+        promoted: true,
+        adTrackingId:
+          "cid=52ba7afe-6500-4bad-8390-36b0b7eb63ba~p=9~adgrpid=52ba7afe-6500-4bad-8390-36b0b7eb63ba#ag1~mp=SWIGGY_IN~bl=FOOD~aet=RESTAURANT~aeid=635864~plpr=COLLECTION~eid=0cacdac7-1d4e-415f-af32-132e347796ae~srvts=1754589622358~collid=83645",
+        sla: {
+          deliveryTime: 28,
+          lastMileTravel: 1.6,
+          serviceability: "SERVICEABLE",
+          slaString: "25-30 mins",
+          lastMileTravelString: "1.6 km",
+          iconType: "ICON_TYPE_EMPTY",
+        },
+        availability: {
+          nextCloseTime: "2025-08-07 23:59:00",
+          opened: true,
+        },
+        badges: {},
+        isOpen: true,
+        type: "F",
+        badgesV2: {
+          entityBadges: {
+            textBased: {},
+            imageBased: {},
+            textExtendedBadges: {},
+          },
+        },
+        aggregatedDiscountInfoV3: {
+          header: "10% OFF",
+          subHeader: "UPTO ₹40",
+          logoCtx: {
+            text: "BENEFITS",
+          },
+        },
+        orderabilityCommunication: {
+          title: {},
+          subTitle: {},
+          message: {},
+          customIcon: {},
+          commsStyling: {},
+        },
+        differentiatedUi: {
+          displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+          differentiatedUiMediaDetails: {
+            mediaType: "ADS_MEDIA_ENUM_IMAGE",
+            lottie: {},
+            video: {},
+          },
+        },
+        reviewsSummary: {},
+        displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        restaurantOfferPresentationInfo: {},
+        externalRatings: {
+          aggregatedRating: {
+            rating: "--",
+          },
+        },
+        ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+        campaignId: "52ba7afe-6500-4bad-8390-36b0b7eb63ba",
+      },
+      analytics: {},
+      cta: {
+        link: "swiggy://menu?restaurant_id=635864&source=collection&query=North%20Indian",
+        text: "RESTAURANT_MENU",
+        type: "DEEPLINK",
+      },
+      widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food",
+    },
+    relevance: {
+      type: "RELEVANCE_TYPE_ON_MENU_RETURN",
+      sectionId: "MENU_RETURN_FOOD",
+    },
+  },
+};
 
-const ResturantCard = () => {
+const ResturantCard = (props) => {
+  console.log(props);
+  const { resData } = props;
   return (
     <div className="res-card">
-      
       <img
-        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/4/26/dc21d7cc-bdb1-4aa8-a5bf-30222cf54c55_1082750%20(1).jpg"
-        alt="A2B logo" className="res-logo"
+        src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+          resData.card.card.info.cloudinaryImageId
+        }
+        alt="A2B logo"
+        className="res-logo"
       />
-      <h3 className="res-card-heading">A2B</h3>
-      <h4>Cuisine:South Indian</h4>
-      <h4>Star Rating:4.5 Stars</h4>
-      <h4>ETA:38 minutes</h4>
+      <h3 className="res-card-heading">{resData.card.card.info.name}</h3>
+      <h4>{resData.card.card.info.cuisines.join(",")}</h4>
+      <h4>{resData.card.card.info.avgRating}</h4>
+      <h4>{resData.card.card.info.sla.deliveryTime}</h4>
+      <h4>{resData.card.card.info.costForTwo}</h4>
     </div>
   );
 };
+
 const Body = () => {
   return (
     <div className="body">
@@ -45,16 +146,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        <ResturantCard />
-        <ResturantCard />
-        <ResturantCard />
-        <ResturantCard />
-        <ResturantCard />
-        <ResturantCard />
-        <ResturantCard />
-        <ResturantCard />
-        <ResturantCard />
-        <ResturantCard />
+        <ResturantCard resData={resObj} />
       </div>
     </div>
   );
