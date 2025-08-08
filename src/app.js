@@ -861,7 +861,7 @@ const Body = () => {
       <div className="res-container">
         {
           resList.map((resturant)=>
-          <ResturantCard resData={resturant}/>)
+          <ResturantCard key={resturant.card.card.info.id}      resData={resturant}/>)
         }
       </div>
     </div>
