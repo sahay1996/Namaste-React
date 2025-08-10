@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from"react-dom/client";
-import LOGO_URL from "../utils/constants";
+import {LOGO_URL} from "../utils/constants";
 
 const Header = () => {
   return (
