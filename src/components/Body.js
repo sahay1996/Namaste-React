@@ -3,17 +3,34 @@ import ReactDOM from "react-dom/client";
 import ResturantCard from "./ResturantCard";
 import resList from "../utils/mockData";
 import { useState,useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 
 const Body = () => {
-  const [resturantList,setresturantList]=useState(resList);
-  return (
+  const [resturantList,setresturantList]=useState([]);
+  useEffect(()=>{
+    fetchData();
+  },[]);
+  const fetchData = async()=>{
+    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.640936&lng=77.281125&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    const json = await data.json();
+    // console.log(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+    setresturantList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  }
+  return resturantList.length===0?<Shimmer />:(
+
     <div className="body">
       <div className="search">
+        <div className="searchtext">
+        <input type="text" placeholder="serach rest"/>
+        <button className="serachbtn">Search</button>
+        </div>
+        <div className="filter">
         <button className="filter-btn" 
         onClick={()=>{
           const filterLogic = resturantList.filter((res)=>{
-            return res.card.card.info.avgRating>4.2;
+            // console.log(res?.data?.info?.avgRating)
+            return res?.info?.avgRating>4.2;
           })
           console.log(filterLogic)
           setresturantList(filterLogic)
@@ -21,12 +38,13 @@ const Body = () => {
         >
           Top rated Resturants
         </button>
+        </div>
       </div>
       <div className="res-container">
-        {resturantList.map((resturant) => (
+        {resturantList?.map((resturant) => (
           <ResturantCard
-            key={resturant.card.card.info.id}
-            resData={resturant}
+            key={resturant?.info.id}
+            resData={resturant?.info}
           />
         ))}
       </div>
