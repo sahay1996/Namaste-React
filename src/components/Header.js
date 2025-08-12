@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from"react-dom/client";
 import {LOGO_URL} from "../utils/constants";
 import { useState,useEffect } from "react";
+import { Link } from "react-router";
 const Header = () => {
   const [usebtnName,setbtnName] = useState("Login");
   const [usetext,setuseText] = useState("");
@@ -16,9 +17,15 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home </li>
-          <li>About</li>
-          <li>Contact Us</li>
+          <li>
+           <Link to="/">Home </Link> 
+            </li>
+          <li>
+            <Link to="/About">About</Link>
+            </li>
+          <li>
+           <Link to="/Contact">Contact Us</Link> 
+            </li>
           <li>Cart</li>
           <button className="btn-Name" onClick={()=>
             usebtnName==="Login"?setbtnName("Logout"):setbtnName("Login")
